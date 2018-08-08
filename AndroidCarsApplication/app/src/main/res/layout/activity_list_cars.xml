@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.listcars.ListCarsActivity">
+    tools:context=".views.listcars.listcarsbybrand.ListCarsActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.example.zahariev.androidcarsapplication.views.customviews.CustomView
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/drawer_toolbar"

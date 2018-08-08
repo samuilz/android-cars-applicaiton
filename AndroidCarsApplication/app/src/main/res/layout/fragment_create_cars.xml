@@ -6,21 +6,21 @@
     tools:context=".views.createcars.CreateCarsFragment">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:text="Create car"
             style="@style/Title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Create car" />
 
         <TextView
-            android:text="Car name"
             style="@style/BigText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Brand" />
 
         <EditText
             android:id="@+id/et_cars_name"
@@ -28,33 +28,44 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:text="Car model"
             style="@style/BigText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Model" />
 
         <EditText
             android:id="@+id/et_cars_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:text="Car description"
-            style="@style/BigText"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/et_cars_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_image"
+                style="@style/BigText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image" />
 
-        <Button
-            android:id="@+id/btn_create"
-            android:text="Create"
-            style="@style/Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/tv_image"
+                android:text="Upload image" />
+
+            <Button
+                android:id="@+id/btn_create"
+                style="@style/Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_image"
+                android:text="Create" />
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 

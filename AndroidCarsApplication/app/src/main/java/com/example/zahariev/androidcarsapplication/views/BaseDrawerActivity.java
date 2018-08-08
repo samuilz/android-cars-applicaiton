@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.zahariev.androidcarsapplication.views.createcars.CreateCarsActivity;
-import com.example.zahariev.androidcarsapplication.views.listcars.ListCarsActivity;
+import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybrand.ListCarsActivity;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;

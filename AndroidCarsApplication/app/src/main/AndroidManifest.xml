@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".views.listcars.ListCarsActivity">
+        <activity android:name=".views.listcars.listcarsbybrand.ListCarsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.createcars.CreateCarsActivity"></activity>
+        <activity android:name=".views.createcars.CreateCarsActivity" />
+        <activity android:name=".views.listcars.listcarsbymodel.ListCarsByModelActivity"></activity>
     </application>
 
 </manifest>
