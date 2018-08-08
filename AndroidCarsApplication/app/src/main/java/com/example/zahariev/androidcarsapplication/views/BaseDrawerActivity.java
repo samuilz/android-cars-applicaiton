@@ -19,11 +19,11 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     public void setUpDrawer() {
         PrimaryDrawerItem listCars = new PrimaryDrawerItem()
                 .withIdentifier(ListCarsActivity.IDENTIFIER)
-                .withName("Cars");
+                .withName("Show cars album");
 
         PrimaryDrawerItem createCars = new PrimaryDrawerItem()
                 .withIdentifier(CreateCarsActivity.IDENTIFIER)
-                .withName("Create cars");
+                .withName("Create car");
 
 
         Drawer drawer = new DrawerBuilder()

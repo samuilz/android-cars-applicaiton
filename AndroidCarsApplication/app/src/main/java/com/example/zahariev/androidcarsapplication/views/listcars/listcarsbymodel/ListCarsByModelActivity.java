@@ -12,6 +12,11 @@ public class ListCarsByModelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_cars_by_model);
 
+        ListCarsByModelFragment fragment = ListCarsByModelFragment.newInstance();
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, fragment)
+                .commit();
     }
 }

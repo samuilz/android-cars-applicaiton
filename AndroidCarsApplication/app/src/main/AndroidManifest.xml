@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.createcars.CreateCarsActivity" />
-        <activity android:name=".views.listcars.listcarsbymodel.ListCarsByModelActivity"></activity>
+        <activity android:name=".views.listcars.listcarsbymodel.ListCarsByModelActivity" />
     </application>
 
 </manifest>
