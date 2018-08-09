@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.zahariev.androidcarsapplication.views.createcars.CreateCarsActivity;
-import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybrand.ListCarsActivity;
+import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybrand.ListCarsByBrandActivity;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -18,7 +18,7 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
 
     public void setUpDrawer() {
         PrimaryDrawerItem listCars = new PrimaryDrawerItem()
-                .withIdentifier(ListCarsActivity.IDENTIFIER)
+                .withIdentifier(ListCarsByBrandActivity.IDENTIFIER)
                 .withName("Show cars album");
 
         PrimaryDrawerItem createCars = new PrimaryDrawerItem()
@@ -55,8 +55,8 @@ public abstract class BaseDrawerActivity extends AppCompatActivity {
     private Intent getNextIntent(int identifier) {
         Intent intent = null;
         switch (identifier) {
-            case ListCarsActivity.IDENTIFIER:
-                intent = new Intent(this, ListCarsActivity.class);
+            case ListCarsByBrandActivity.IDENTIFIER:
+                intent = new Intent(this, ListCarsByBrandActivity.class);
                 break;
             case CreateCarsActivity.IDENTIFIER:
                 intent = new Intent(this, CreateCarsActivity.class);

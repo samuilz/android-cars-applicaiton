@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +17,9 @@ import com.example.zahariev.androidcarsapplication.R;
 import com.example.zahariev.androidcarsapplication.models.Car;
 import com.example.zahariev.androidcarsapplication.repositories.FirebaseRepository;
 import com.example.zahariev.androidcarsapplication.repositories.base.Repository;
-import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybrand.ListCarsActivity;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybrand.ListCarsByBrandActivity;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -82,7 +78,7 @@ public class CreateCarsFragment extends Fragment {
                     Toast.LENGTH_SHORT)
                     .show();
 
-            Intent intent = new Intent(getContext(), ListCarsActivity.class);
+            Intent intent = new Intent(getContext(), ListCarsByBrandActivity.class);
             startActivity(intent);
         });
     }
@@ -102,7 +98,7 @@ public class CreateCarsFragment extends Fragment {
 
     private void saveImageToFirebaseStorage(Uri image) {
         StorageReference carsRef = mFirebaseStorage
-                .child(String.format("images/%s.jpg", mCarModel.getText().toString()));
+                .child(String.format("models/%s.jpg", mCarModel.getText().toString()));
 
         carsRef.putFile(image);
     }

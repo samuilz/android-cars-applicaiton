@@ -7,13 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
 import com.example.zahariev.androidcarsapplication.R;
 import com.example.zahariev.androidcarsapplication.models.Car;
 import com.example.zahariev.androidcarsapplication.repositories.FirebaseRepository;
 import com.example.zahariev.androidcarsapplication.repositories.base.Repository;
+import com.example.zahariev.androidcarsapplication.views.customviews.CustomView;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Objects;
@@ -43,6 +48,20 @@ public class ListCarsByModelFragment extends Fragment {
         Intent intentFromListCarsFragment = getActivity().getIntent();
         String carBrand = intentFromListCarsFragment
                 .getStringExtra("CAR_BRAND");
+
+        //        setSupportActionBar(mToolBar);
+
+        mFirebaseStorage = FirebaseStorage.getInstance().getReference();
+
+        StorageReference carsRef = mFirebaseStorage
+                .child(String.format("brands/%s.png", carBrand.toLowerCase()));
+
+        ImageView wallpaper = root.findViewById(R.id.cv_car_brand);
+
+        Glide.with(this)
+                .using(new FirebaseImageLoader())
+                .load(carsRef)
+                .into(wallpaper);
 
         mCarsAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_list_item_1);
         ListView listView = root.findViewById(R.id.lv_cars);

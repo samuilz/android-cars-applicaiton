@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar;
 import com.example.zahariev.androidcarsapplication.R;
 import com.example.zahariev.androidcarsapplication.views.BaseDrawerActivity;
 
-public class ListCarsActivity extends BaseDrawerActivity {
+public class ListCarsByBrandActivity extends BaseDrawerActivity {
     public static final int IDENTIFIER = 1;
     private Toolbar mToolBar;
 
@@ -16,9 +16,8 @@ public class ListCarsActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_list_cars);
 
         mToolBar = findViewById(R.id.drawer_toolbar);
-//        setSupportActionBar(mToolBar);
 
-        ListCarsFragment fragment = ListCarsFragment.newInstance();
+        ListCarsByBrandFragment fragment = ListCarsByBrandFragment.newInstance();
 
         getSupportFragmentManager()
                 .beginTransaction()

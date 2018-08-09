@@ -16,7 +16,6 @@ import com.example.zahariev.androidcarsapplication.models.Car;
 import com.example.zahariev.androidcarsapplication.repositories.FirebaseRepository;
 import com.example.zahariev.androidcarsapplication.repositories.base.Repository;
 import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbymodel.ListCarsByModelActivity;
-import com.example.zahariev.androidcarsapplication.views.listcars.listcarsbymodel.ListCarsByModelFragment;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
@@ -24,12 +23,12 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListCarsFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ListCarsByBrandFragment extends Fragment implements AdapterView.OnItemClickListener {
     private ArrayAdapter<String> mCarsAdapter;
     private Repository<Car> mCarsRepository;
     private FirebaseFirestore mDb;
 
-    public ListCarsFragment() {
+    public ListCarsByBrandFragment() {
         // Required empty public constructor
     }
 
@@ -71,7 +70,7 @@ public class ListCarsFragment extends Fragment implements AdapterView.OnItemClic
         startActivity(listCarsByModel);
     }
 
-    public static ListCarsFragment newInstance() {
-        return new ListCarsFragment();
+    public static ListCarsByBrandFragment newInstance() {
+        return new ListCarsByBrandFragment();
     }
 }

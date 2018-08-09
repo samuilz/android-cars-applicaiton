@@ -3,20 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.listcars.listcarsbybrand.ListCarsActivity">
+    tools:context=".views.listcars.listcarsbybrand.ListCarsByBrandActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="41dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="41dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/drawer_toolbar"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-             />
+            android:layout_height="40dp" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -30,9 +29,9 @@
 
         <com.example.zahariev.androidcarsapplication.views.customviews.CustomView
             android:id="@+id/cv_wallpaper"
-            android:layout_below="@id/tv_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title" />
 
         <FrameLayout
             android:id="@+id/content"

@@ -4,10 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -29,7 +26,7 @@ public class CustomView extends View {
         init(attrs);
     }
 
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)  {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
@@ -39,19 +36,6 @@ public class CustomView extends View {
         init(attrs);
     }
 
-    private void init(@Nullable AttributeSet attrs) {
-        mImage = BitmapFactory.decodeResource(getResources(), R.drawable.mercedeze63amg);
-
-        getViewTreeObserver()
-                .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                        mImage = getResizedBitmap(mImage, getWidth(), getHeight());
-                    }
-                });
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -69,4 +53,17 @@ public class CustomView extends View {
         return Bitmap.createBitmap(mImage, 0, 0, mImage.getWidth(), mImage.getHeight(), matrix, true);
     }
 
+    private void init(@Nullable AttributeSet attrs) {
+        mImage = BitmapFactory.decodeResource(getResources(), R.drawable.mercedeze63amg);
+
+        getViewTreeObserver()
+                .addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                        mImage = getResizedBitmap(mImage, getWidth(), getHeight());
+                    }
+                });
+    }
 }
