@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -16,23 +17,28 @@ import com.example.zahariev.androidcarsapplication.models.Car;
 import com.example.zahariev.androidcarsapplication.repositories.FirebaseRepository;
 import com.example.zahariev.androidcarsapplication.repositories.base.Repository;
 import com.example.zahariev.androidcarsapplication.views.customviews.CustomView;
+import com.example.zahariev.androidcarsapplication.views.listcars.listspecificcar.ListSpecificCarActivity;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListCarsByModelFragment extends Fragment {
+public class ListCarsByModelFragment extends Fragment implements AdapterView.OnItemClickListener {
     private StorageReference mFirebaseStorage;
     private ArrayAdapter<String> mCarsAdapter;
     private Repository<Car> mCarsRepository;
     private FirebaseFirestore mDb;
+    private List<Car> mCars;
 
     public ListCarsByModelFragment() {
+        mCars = new ArrayList<>();
         // Required empty public constructor
     }
 
@@ -67,14 +73,15 @@ public class ListCarsByModelFragment extends Fragment {
         ListView listView = root.findViewById(R.id.lv_cars);
 
         listView.setAdapter(mCarsAdapter);
-//        listView.setOnItemClickListener(this);
+        listView.setOnItemClickListener(this);
 
         mCarsRepository = new FirebaseRepository<>(Car.class);
 
         mCarsRepository.getAll(cars -> {
             for (Car car : cars) {
                 if (car.brand.equals(carBrand)) {
-                    mCarsAdapter.add(String.format("%s - %s", car.brand, car.model));
+                    mCarsAdapter.add(car.model);
+                    mCars.add(car);
                 }
             }
         });
@@ -84,5 +91,17 @@ public class ListCarsByModelFragment extends Fragment {
 
     public static ListCarsByModelFragment newInstance() {
         return new ListCarsByModelFragment();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent specificCar = new Intent(
+                getContext(),
+                ListSpecificCarActivity.class
+        );
+
+        Car car = mCars.get(position);
+        specificCar.putExtra("CAR_OBJECT", car);
+        startActivity(specificCar);
     }
 }

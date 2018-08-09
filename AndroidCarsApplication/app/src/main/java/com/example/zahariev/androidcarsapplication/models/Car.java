@@ -1,15 +1,23 @@
 package com.example.zahariev.androidcarsapplication.models;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
     public String brand;
     public String model;
+    public String description;
 
     public Car() {
 
     }
 
     public Car(String brand, String model) {
+        this(brand, model, null);
+    }
+
+    public Car(String brand, String model, String description) {
         this.brand = brand;
         this.model = model;
+        this.description = description;
     }
 }
