@@ -12,6 +12,10 @@
         <item name="android:textSize">25sp</item>
     </style>
 
+    <style name="Ordinary">
+        <item name="android:textSize">20sp</item>
+    </style>
+
     <style name="Title">
         <item name="android:textSize">34sp</item>
         <item name="android:color">#d9f106</item>

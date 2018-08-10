@@ -53,6 +53,9 @@ public class ListSpecificCarFragment extends Fragment {
                 .load(carsRef)
                 .into(wallpaper);
 
+        TextView description = root.findViewById(R.id.tv_description);
+        description.setText(car.description);
+
         return root;
     }
 

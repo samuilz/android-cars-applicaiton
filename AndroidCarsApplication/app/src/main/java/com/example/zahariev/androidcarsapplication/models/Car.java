@@ -11,10 +11,6 @@ public class Car implements Serializable {
 
     }
 
-    public Car(String brand, String model) {
-        this(brand, model, null);
-    }
-
     public Car(String brand, String model, String description) {
         this.brand = brand;
         this.model = model;

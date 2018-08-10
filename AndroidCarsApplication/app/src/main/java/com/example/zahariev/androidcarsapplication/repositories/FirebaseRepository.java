@@ -17,6 +17,12 @@ public class FirebaseRepository<T> implements Repository<T> {
         this.mCollectionName = clazz.getSimpleName().toLowerCase() + "s";
     }
 
+    public FirebaseRepository(Class<T> clazz, String databaseName) {
+        this.mDb = FirebaseFirestore.getInstance();
+        this.mClass = clazz;
+        this.mCollectionName = databaseName;
+    }
+
     @Override
     public void getAll(Consumer<List<T>> action) {
         mDb.collection(mCollectionName)

@@ -24,6 +24,7 @@ import java.util.Objects;
  * A simple {@link Fragment} subclass.
  */
 public class ListCarsByBrandFragment extends Fragment implements AdapterView.OnItemClickListener {
+    private static final String DATABASE_NAME = "brands";
     private ArrayAdapter<String> mCarsAdapter;
     private Repository<Car> mCarsRepository;
     private FirebaseFirestore mDb;
@@ -47,7 +48,7 @@ public class ListCarsByBrandFragment extends Fragment implements AdapterView.OnI
         listView.setAdapter(mCarsAdapter);
         listView.setOnItemClickListener(this);
 
-        mCarsRepository = new FirebaseRepository<>(Car.class);
+        mCarsRepository = new FirebaseRepository<>(Car.class, DATABASE_NAME);
 
         mCarsRepository.getAll(cars -> {
             for (Car currentCar : cars) {
