@@ -73,22 +73,20 @@ public class CreateCarsFragment extends Fragment {
         );
 
         imageButton.setOnClickListener(click -> {
-            imageButton.setOnClickListener(v -> {
-                Intent gallery = new Intent(
-                        Intent.ACTION_PICK,
-                        MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+            Intent gallery = new Intent(
+                    Intent.ACTION_PICK,
+                    MediaStore.Images.Media.INTERNAL_CONTENT_URI);
 
-                startActivityForResult(gallery, PICK_IMAGE);
-            });
+            startActivityForResult(gallery, PICK_IMAGE);
         });
 
         return root;
     }
 
     private void intentHandle() {
-        String carBrand = mCarBrand.getText().toString();
-        String carModel = mCarModel.getText().toString();
-        String carDescription = mCarDescription.getText().toString();
+        String carBrand = mCarBrand.getText().toString().trim();
+        String carModel = mCarModel.getText().toString().trim();
+        String carDescription = mCarDescription.getText().toString().trim();
 
         mButton.setOnClickListener(click -> {
             if (!checkFields(carBrand, carModel, carDescription)) {

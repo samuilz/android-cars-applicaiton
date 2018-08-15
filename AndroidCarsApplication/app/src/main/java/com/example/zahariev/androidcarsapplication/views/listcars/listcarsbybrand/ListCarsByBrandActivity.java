@@ -2,6 +2,8 @@ package com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybra
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.zahariev.androidcarsapplication.R;
 import com.example.zahariev.androidcarsapplication.views.BaseDrawerActivity;

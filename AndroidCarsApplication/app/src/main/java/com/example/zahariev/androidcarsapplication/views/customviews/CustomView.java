@@ -39,18 +39,9 @@ public class CustomView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawBitmap(mImage, 0, 0, null);
-    }
+        float imageX = (getWidth() - mImage.getWidth()) / 2;
 
-    private Bitmap getResizedBitmap(Bitmap mImage, int reqWidth, int reqHeight) {
-        Matrix matrix = new Matrix();
-
-        RectF src = new RectF(0, 0, mImage.getWidth(), mImage.getHeight());
-        RectF dst = new RectF(0, 0, reqWidth, reqHeight);
-
-        matrix.setRectToRect(src, dst, Matrix.ScaleToFit.CENTER);
-
-        return Bitmap.createBitmap(mImage, 0, 0, mImage.getWidth(), mImage.getHeight(), matrix, true);
+        canvas.drawBitmap(mImage, imageX, 0, null);
     }
 
     private void init(@Nullable AttributeSet attrs) {
@@ -62,8 +53,22 @@ public class CustomView extends View {
                     public void onGlobalLayout() {
                         getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-                        mImage = getResizedBitmap(mImage, getWidth(), getHeight());
+                        int padding = 50;
+
+                        mImage = getResizedBitmap(mImage,
+                                getWidth() - padding, getHeight() - padding);
                     }
                 });
+    }
+
+    private Bitmap getResizedBitmap(Bitmap mImage, int reqWidth, int reqHeight) {
+        Matrix matrix = new Matrix();
+
+        RectF src = new RectF(0, 0, mImage.getWidth(), mImage.getHeight());
+        RectF dst = new RectF(0, 0, reqWidth, reqHeight);
+
+        matrix.setRectToRect(src, dst, Matrix.ScaleToFit.CENTER);
+
+        return Bitmap.createBitmap(mImage, 0, 0, mImage.getWidth(), mImage.getHeight(), matrix, true);
     }
 }
