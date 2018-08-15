@@ -1,2 +1,2 @@
 # android-cars-applicaiton
-Simple android application for cars
+Android application about cars
