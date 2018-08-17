@@ -5,78 +5,85 @@
     android:layout_height="match_parent"
     tools:context=".views.createcars.CreateCarsFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv_title"
             style="@style/Title"
-            android:textColor="#829c02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create car" />
+            android:layout_centerHorizontal="true"
+            android:text="Create car"
+            android:textColor="#829c02" />
 
         <TextView
+            android:id="@id/tv_brand"
             style="@style/BigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
             android:text="Brand" />
 
         <EditText
             android:id="@+id/et_cars_brand"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_brand" />
 
         <TextView
+            android:id="@+id/tv_model"
             style="@style/BigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/et_cars_brand"
             android:text="Model" />
 
         <EditText
             android:id="@+id/et_cars_model"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_model" />
 
         <TextView
+            android:id="@+id/tv_description"
             style="@style/BigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/et_cars_model"
             android:text="Description" />
 
         <EditText
             android:id="@+id/et_cars_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_description" />
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/tv_image"
+            style="@style/BigText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_cars_description"
+            android:text="Image" />
 
-            <TextView
-                android:id="@+id/tv_image"
-                style="@style/BigText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Image" />
-
-            <Button
-                android:id="@+id/btn_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_image"
-                android:text="Upload image" />
-
-        </RelativeLayout>
+        <Button
+            android:id="@+id/btn_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_image"
+            android:text="Upload image" />
 
         <Button
             android:id="@+id/btn_create"
             style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:text="Create" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

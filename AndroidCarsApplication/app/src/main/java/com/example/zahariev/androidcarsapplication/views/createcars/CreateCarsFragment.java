@@ -44,10 +44,12 @@ public class CreateCarsFragment extends Fragment {
     private StorageReference mFirebaseStorage;
     private boolean mIsBrandExist;
     private boolean mIsCarExist;
+    private boolean mImageMissed;
 
     public CreateCarsFragment() {
         mIsBrandExist = false;
         mIsCarExist = false;
+        mImageMissed = false;
         // Required empty public constructor
     }
 
@@ -66,11 +68,16 @@ public class CreateCarsFragment extends Fragment {
         mButton = root.findViewById(R.id.btn_create);
         Button imageButton = root.findViewById(R.id.btn_image);
 
-        mButton.setOnClickListener(click -> checkFields(
-                mCarBrand.getText().toString(),
-                mCarModel.getText().toString(),
-                mCarDescription.getText().toString())
-        );
+        mButton.setOnClickListener(click -> {
+            checkFields(
+                    mCarBrand.getText().toString(),
+                    mCarModel.getText().toString(),
+                    mCarDescription.getText().toString());
+
+            if (mImageMissed) {
+                makeToast("Please upload an image!");
+            }
+        });
 
         imageButton.setOnClickListener(click -> {
             Intent gallery = new Intent(
@@ -104,7 +111,7 @@ public class CreateCarsFragment extends Fragment {
 
     private void isExist(Car car, Repository<Car> repository) {
         repository.getAll(carList -> {
-            for (Car currentCar : carList) {
+            carList.forEach(currentCar -> {
                 if (currentCar.brand.compareTo(car.brand) == 0) {
                     mIsBrandExist = true;
 
@@ -112,7 +119,7 @@ public class CreateCarsFragment extends Fragment {
                         mIsCarExist = true;
                     }
                 }
-            }
+            });
 
             if (mIsCarExist) {
                 makeToast("This car already exist!");
@@ -143,6 +150,7 @@ public class CreateCarsFragment extends Fragment {
         } else if (args[2].equals("")) {
             makeToast("Please enter a description!");
         } else {
+            mImageMissed = true;
             return true;
         }
 

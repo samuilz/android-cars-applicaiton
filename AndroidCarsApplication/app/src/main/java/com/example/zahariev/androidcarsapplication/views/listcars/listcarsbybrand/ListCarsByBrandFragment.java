@@ -3,6 +3,7 @@ package com.example.zahariev.androidcarsapplication.views.listcars.listcarsbybra
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -56,8 +57,18 @@ public class ListCarsByBrandFragment extends Fragment {
 
         mDb = FirebaseFirestore.getInstance();
 
-        mCarsAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_list_item_1);
+//        mCarsAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_list_item_1);
         ListView listView = root.findViewById(R.id.lv_cars);
+
+//        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            View header = getLayoutInflater().inflate(R.layout.list_cars_by_brand_layout, null);
+//            listView.addHeaderView(header);
+//        } else {
+//
+//        }
+
+        View header = getLayoutInflater().inflate(R.layout.list_cars_by_brand_layout, null);
+        listView.addHeaderView(header, null, false);
 
         mCarsRepository = new FirebaseRepository<>(Car.class, DATABASE_NAME);
         mFirebaseStorage = FirebaseStorage.getInstance().getReference();
@@ -66,15 +77,24 @@ public class ListCarsByBrandFragment extends Fragment {
         mCarsRepository.getAll(
                 cars -> {
                     allCars.addAll(cars);
+
+                    if (getActivity() == null) {
+                        return;
+                    }
+
                     carAdapter[0] = new CarAdapter(getActivity());
                     listView.setAdapter(carAdapter[0]);
                     listView.setOnItemClickListener((adapterView, view, position,  l) -> {
+//                        if (position == 0) {
+//                            return;
+//                        }
+
                         Intent listCarsByModel = new Intent(
                                 getContext(),
                                 ListCarsByModelActivity.class
                         );
 
-                        String clickedCarBrand = allCars.get(position).brand;
+                        String clickedCarBrand = allCars.get(position - 1).brand;
                         listCarsByModel.putExtra("CAR_BRAND", clickedCarBrand);
                         startActivity(listCarsByModel);
                     });
@@ -83,24 +103,12 @@ public class ListCarsByBrandFragment extends Fragment {
         return root;
     }
 
-//    @Override
-//    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//        Intent listCarsByModel = new Intent(
-//                getContext(),
-//                ListCarsByModelActivity.class
-//        );
-//
-//        String clickedCarBrand = mCarsAdapter.getItem(position);
-//        listCarsByModel.putExtra("CAR_BRAND", clickedCarBrand);
-//        startActivity(listCarsByModel);
-//    }
-
     public static ListCarsByBrandFragment newInstance() {
         return new ListCarsByBrandFragment();
     }
 
     private class CarAdapter extends ArrayAdapter {
-        public CarAdapter(@NonNull Context context) {
+        CarAdapter(@NonNull Context context) {
             super(context, R.layout.custom_list_view_row, R.id.tv_brand, allCars);
         }
 

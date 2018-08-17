@@ -16,7 +16,6 @@ import com.example.zahariev.androidcarsapplication.R;
 import com.example.zahariev.androidcarsapplication.models.Car;
 import com.example.zahariev.androidcarsapplication.repositories.FirebaseRepository;
 import com.example.zahariev.androidcarsapplication.repositories.base.Repository;
-import com.example.zahariev.androidcarsapplication.views.customviews.CustomView;
 import com.example.zahariev.androidcarsapplication.views.listcars.listspecificcar.ListSpecificCarActivity;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,8 +53,6 @@ public class ListCarsByModelFragment extends Fragment implements AdapterView.OnI
         Intent intentFromListCarsFragment = getActivity().getIntent();
         String carBrand = intentFromListCarsFragment
                 .getStringExtra("CAR_BRAND");
-
-        //        setSupportActionBar(mToolBar);
 
         mFirebaseStorage = FirebaseStorage.getInstance().getReference();
 
