@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="CARS ALBUM"
-            android:textColor="#829c02" />
+            android:textColor="#d1f216" />
 
         <ImageView
             android:id="@+id/cv_wallpaper"

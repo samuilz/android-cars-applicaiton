@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.zahariev.androidcarsapplication.R;
@@ -57,15 +60,7 @@ public class ListCarsByBrandFragment extends Fragment {
 
         mDb = FirebaseFirestore.getInstance();
 
-//        mCarsAdapter = new ArrayAdapter<>(Objects.requireNonNull(getContext()), android.R.layout.simple_list_item_1);
         ListView listView = root.findViewById(R.id.lv_cars);
-
-//        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-//            View header = getLayoutInflater().inflate(R.layout.list_cars_by_brand_layout, null);
-//            listView.addHeaderView(header);
-//        } else {
-//
-//        }
 
         View header = getLayoutInflater().inflate(R.layout.list_cars_by_brand_layout, null);
         listView.addHeaderView(header, null, false);
@@ -84,10 +79,8 @@ public class ListCarsByBrandFragment extends Fragment {
 
                     carAdapter[0] = new CarAdapter(getActivity());
                     listView.setAdapter(carAdapter[0]);
-                    listView.setOnItemClickListener((adapterView, view, position,  l) -> {
-//                        if (position == 0) {
-//                            return;
-//                        }
+                    registerForContextMenu(listView);
+                    listView.setOnItemClickListener((adapterView, view, position, l) -> {
 
                         Intent listCarsByModel = new Intent(
                                 getContext(),
@@ -102,6 +95,37 @@ public class ListCarsByBrandFragment extends Fragment {
 
         return root;
     }
+
+//    @Override
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
+//
+//        menu.add(0, v.getId(), 0, "Delete");
+//    }
+
+//    @Override
+//    public boolean onContextItemSelected(MenuItem item) {
+//        if (item.getTitle() == "Delete") {
+//            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+//            int index = info.position;
+//
+//            Car carToDelete = allCars.get(index);
+//
+//            mCarsRepository.getAll(cars -> {
+//                cars.remove(index);
+//
+//                Intent intent = new Intent(
+//                        getContext(),
+//                        ListCarsByBrandActivity.class
+//                );
+//
+//                startActivity(intent);
+//
+//            });
+//        }
+//
+//        return true;
+//    }
 
     public static ListCarsByBrandFragment newInstance() {
         return new ListCarsByBrandFragment();

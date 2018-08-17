@@ -74,14 +74,13 @@ public class ListCarsByModelFragment extends Fragment implements AdapterView.OnI
 
         mCarsRepository = new FirebaseRepository<>(Car.class);
 
-        mCarsRepository.getAll(cars -> {
-            for (Car car : cars) {
-                if (car.brand.equals(carBrand)) {
-                    mCarsAdapter.add(car.model);
-                    mCars.add(car);
-                }
-            }
-        });
+        mCarsRepository.getAll(cars ->
+                cars.forEach(car -> {
+                    if (car.brand.equals(carBrand)) {
+                        mCarsAdapter.add(car.model);
+                        mCars.add(car);
+                    }
+                }));
 
         return root;
     }

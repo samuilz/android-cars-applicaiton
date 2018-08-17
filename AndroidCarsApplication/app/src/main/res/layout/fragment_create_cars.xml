@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Create car"
-            android:textColor="#829c02" />
+            android:textColor="#FFD1F216" />
 
         <TextView
             android:id="@id/tv_brand"

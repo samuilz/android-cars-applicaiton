@@ -16,7 +16,6 @@ public class CreateCarsActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_create_cars);
 
         mToolBar = findViewById(R.id.drawer_toolbar);
-//        setSupportActionBar(mToolBar);
 
         CreateCarsFragment fragment = CreateCarsFragment.newInstance();
 
