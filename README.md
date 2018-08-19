@@ -1,4 +1,4 @@
-### This is cars album application made on Android and using Firebase Firestore Database. It's purpose is to make me feel more comfortable in this platform.  
+### This is cars album application made on Android and using Firebase Firestore Database. It's purpose is to introduce me in Android and make me feel more comfortable in this platform.  
 
 # Contributors: 
 - Samuil Zahariev (*samuilz*)
