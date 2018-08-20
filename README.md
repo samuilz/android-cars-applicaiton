@@ -14,10 +14,7 @@
 ![Alt text](https://github.com/samuilz/android-cars-applicaiton/blob/master/images/image4.png)
 ![Alt text](https://github.com/samuilz/android-cars-applicaiton/blob/master/images/image5.png)
 
-
-# Class Diagram
-...
-
- - ## [GitHub Page](https://github.com/samuilz/android-cars-applicaiton)
+- ## [UML](https://raw.githubusercontent.com/samuilz/android-cars-applicaiton/master/UML.bmp)
+- ## [GitHub](https://github.com/samuilz/android-cars-applicaiton)
 
 
