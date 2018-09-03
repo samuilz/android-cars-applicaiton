@@ -15,6 +15,5 @@
 ![Alt text](https://github.com/samuilz/android-cars-applicaiton/blob/master/images/image5.png)
 
 - ## [UML](https://raw.githubusercontent.com/samuilz/android-cars-applicaiton/master/UML.bmp)
-- ## [GitHub](https://github.com/samuilz/android-cars-applicaiton)
 
 
